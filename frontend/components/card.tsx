@@ -31,7 +31,7 @@ export function VerticalCard({
                     <img src={ image } alt=":3" className="w-full h-full box-border object-cover mx-auto" />
                 </div>
                 
-                <div className="w-full h-full border-t border-t-zinc-300 bg-zinc-200">
+                <div className="w-full h-full lg:h-3/12 border-t border-t-zinc-300 bg-zinc-200">
                     { children }
                 </div>
             

@@ -81,7 +81,7 @@ export default function Home() {
       
      <div className="w-full h-fit lg:h-[60dvh] flex flex-col items-start justify-start lg:py-10 px-4 gap-4 lg:gap-14">
         <h1 className="text-4xl lg:text-6xl">Upcoming Events</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-1 grid-rows-4 lg:grid-rows-1 w-full h-full gap-4 overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-4 grid-rows-4 lg:grid-rows-1 w-full h-full gap-4 overflow-hidden">
           {
             UpcomingEventsData.map((e,i) => ( 
               <VerticalCard 
@@ -107,8 +107,11 @@ export default function Home() {
       
       <div className="relative flex flex-col w-full h-fit py-10 gap-10">
         <h1 className="text-6xl">Past Events</h1>
-        <div className="w-full h-auto">
-          {/* <StickyScrollRevealDemo /> */}3
+        <div className="hidden lg:block w-full h-auto">
+          <StickyScrollRevealDemo />
+        </div>
+        <div className="flex lg:hidden w-full h-auto">
+          
         </div>
       </div>
       
