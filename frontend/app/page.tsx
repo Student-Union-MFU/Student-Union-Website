@@ -105,13 +105,28 @@ export default function Home() {
 
       <Separator  className="hidden lg:block"/>
       
-      <div className="relative flex flex-col w-full h-fit py-10 gap-10">
+      <div className="relative flex flex-col w-full h-auto p-4 lg:py-10 gap-10">
         <h1 className="text-6xl">Past Events</h1>
         <div className="hidden lg:block w-full h-auto">
           <StickyScrollRevealDemo />
         </div>
-        <div className="flex lg:hidden w-full h-auto">
-          
+        <div className="relative flex lg:hidden flex-col w-full h-auto gap-10">
+          <div className="absolute top-0 right-1/2 w-1 h-full bg-zinc-900"></div>
+        {
+          [...Array(4)].map((_,i) => (
+            <div key={ i } className="relative w-full h-full min-h-50 border bg-white border-zinc-500 z-10">
+              
+              <div className="flex flex-col justify-center w-4/6 h-auto p-4">
+                <h1 className="text-3xl">Event</h1>
+              </div>
+              <div className=""></div>
+              <div className="absolute right-2 bottom-3 flex items-center justify-center px-3 py-1 gap-1 border rounded-full bg-zinc-50 border-zinc-300">
+                Read More
+                <ArrowUpRightIcon size={25} />
+              </div>
+            </div>
+          ))
+        }
         </div>
       </div>
       

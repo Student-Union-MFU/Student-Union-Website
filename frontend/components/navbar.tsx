@@ -26,7 +26,7 @@ export default function Navbar({
 }:NavbarInterface) {
     return (
         <nav className={cn(
-            "sticky top-0 z-10 flex flex-col items-center justify-center",
+            "sticky top-0 z-40 flex flex-col items-center justify-center",
             "w-full h-fit border-b",
             "bg-background font-Louis",
             "lg:flex-row lg:items-end lg:justify-between lg:h-32",
