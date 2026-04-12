@@ -16,7 +16,7 @@ export default function Footer({
             className
         )}>
 
-            <div className="flex flex-col items-center justify-center lg:justify-between w-full h-full px-6 py-6 lg:px-10 lg:py-0 lg:rounded-xl bg-zinc-100 overflow-hidden">
+            <div className="flex flex-col items-center justify-center lg:justify-between w-full h-full p-4 lg:px-10 lg:py-0 lg:rounded-xl bg-zinc-100 overflow-hidden">
 
                 <div className="w-full h-fit flex justify-between items-center lg:items-end lg:py-4">
                     <div className="flex flex-col w-fit h-full items-start justify-center">
@@ -28,10 +28,10 @@ export default function Footer({
 
                 <Separator />
 
-                <div className="flex flex-wrap lg:flex-nowrap justify-between items-center w-full h-fit lg:h-14">
+                <div className="flex flex-wrap lg:flex-nowrap justify-start lg:justify-between w-full h-fit lg:h-14 lg:py-2">
                     {
                         [...Array(4)].map((_, i) => (
-                            <Button key={i} variant={"link"} size={"lg"} className={"rounded-full px-4!"}>
+                            <Button key={i} variant={"link"} size={"lg"} className={"w-1/2 lg:w-1/4 justify-center lg:justify-start rounded-full lg:px-4!"}>
                                 Check Out
                                 <ArrowUpRightIcon data-icon="inline-start" />
                             </Button>

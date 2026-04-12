@@ -11,7 +11,6 @@ import { HorizontalCard, VerticalCard } from "@/components/card";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import Footer from "@/components/footer";
 import ScrollIndicator from "@/components/scrollindicator";
 
@@ -44,7 +43,7 @@ export default function Home() {
         linkItems={ NavigationData.linkItems } />
 
       <ScrollIndicator 
-        progress={0} 
+        progress={ progress } 
         handleScrollTo={ handleScrollTo } />
 
       <div className="relative max-h-dvh max-w-dvw w-full h-[85dvh] lg:h-[78dvh] lg:rounded-xl bg-zinc-100 overflow-hidden">
@@ -79,22 +78,33 @@ export default function Home() {
 
       <Separator className="hidden lg:block"/>
       
-     <div className="w-full h-fit lg:h-[60dvh] flex flex-col items-start justify-start lg:py-10 px-4 gap-4 lg:gap-14">
+     <div className="w-full h-auto lg:h-[80dvh] flex flex-col items-start justify-start lg:py-10 px-4 gap-4 lg:gap-14">
         <h1 className="text-4xl lg:text-6xl">Upcoming Events</h1>
-        <div className="grid grid-cols-1 lg:grid-cols-4 grid-rows-4 lg:grid-rows-1 w-full h-full gap-4 overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-5 grid-rows-4 lg:grid-rows-1 w-full h-full gap-6">
           {
-            UpcomingEventsData.map((e,i) => ( 
+            UpcomingEventsData.slice(0,3).map((e,i) => ( 
               <VerticalCard 
                 key={ i } 
-                className="relative">
+                className="relative overflow-hidden">
                 
-                <div className="flex flex-col w-full h-full px-6 py-3 gap-2">
-                  <h2 className="text-2xl">{ e.title }</h2>
-                  <p className="truncate">{ e.content }</p>
-                  <span className="absolute top-4 right-4 text-white">
-                    <ArrowUpRight size={ 34 } />
-                  </span>
+                <div className="flex flex-col w-full h-full justify-start px-4 lg:p-2 gap-3 ">
+                  {/* bg-linear-to-t from-zinc-100 via-zinc-100/50 to-transparent lg:bg-transparent! */}
+
+                  <h2 className="w-full text-2xl">{ e.title }</h2>
+                  <div className="flex flex-col w-full h-fit">
+                    <p className="w-full text-sm font-extrabold">{ e.dateTime }</p>
+                    <p className="w-full line-clamp-2 text-base">{ e.location }</p>
+                  </div>
+        
+ 
                 </div>
+                
+                {/* <span className="absolute top-2 left-2 border text-lg px-4 py-1 bg-background/70 rounded-full"> Date: 28.6.2026</span> */}
+              
+                <span className="absolute bottom-0 right-2 flex items-center justify-center px-3 p-1 gap-1 rounded-full bg-[#394786] text-sm text-zinc-50 opacity-75">
+                  More<ArrowUpRight size={ 20 } />
+                </span>
+              
               </VerticalCard>
             ))
           }
@@ -105,8 +115,8 @@ export default function Home() {
 
       <Separator  className="hidden lg:block"/>
       
-      <div className="relative flex flex-col w-full h-auto p-4 lg:py-10 gap-10">
-        <h1 className="text-6xl">Past Events</h1>
+      <div className="relative flex flex-col w-full h-auto p-4 py-8 lg:py-10 gap-4 lg:gap-10">
+        <h1 className="text-4xl lg:text-6xl">Past Events</h1>
         <div className="hidden lg:block w-full h-auto">
           <StickyScrollRevealDemo />
         </div>
@@ -117,10 +127,10 @@ export default function Home() {
             <div key={ i } className="relative w-full h-full min-h-50 border bg-white border-zinc-500 z-10">
               
               <div className="flex flex-col justify-center w-4/6 h-auto p-4">
-                <h1 className="text-3xl">Event</h1>
+                <h1 className="text-2xl">Lorem, ipsum.</h1>
               </div>
               <div className=""></div>
-              <div className="absolute right-2 bottom-3 flex items-center justify-center px-3 py-1 gap-1 border rounded-full bg-zinc-50 border-zinc-300">
+              <div className="absolute right-2 bottom-3 flex items-center justify-center px-3 py-1 gap-1">
                 Read More
                 <ArrowUpRightIcon size={25} />
               </div>
@@ -129,8 +139,6 @@ export default function Home() {
         }
         </div>
       </div>
-      
-      <Separator className="hidden lg:block" />
       
       <div className="flex flex-col lg:flex-row w-full h-screen lg:h-[60dvh] px-4 lg:px-0 py-10">
           <div className="w-full lg:w-1/2 h-full rounded-xl">
@@ -152,15 +160,16 @@ export default function Home() {
           </div>
       </div>
 
-      <Separator className="hidden lg:block" />
 
-      <div className="flex flex-col w-full h-screen py-10 gap-10">
-          <h1 className="text-6xl">Lost and Found Items</h1>
-          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-4 lg:grid-rows-2 w-full h-full py-4 gap-4">
+      <div className="flex flex-col w-full h-auto p-4 lg:py-10 gap-4 lg:gap-10">
+          <h1 className="text-4xl lg:text-6xl">Lost and Found Items</h1>
+          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-4 lg:grid-rows-2 w-full h-full py-4 gap-8 lg:gap-4">
           {
-            [...Array(4)].map((e,i) => (
-              <HorizontalCard>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum, eos aspernatur, temporibus delectus quas, maxime in consequuntur qui officia aliquid molestiae veritatis facere. Dolore libero aperiam temporibus, non eligendi aspernatur?</p>
+            [...Array(3)].map((e,i) => (
+              <HorizontalCard key={i}>
+                <p className="line-clamp-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque unde quod perferendis earum quidem saepe corporis enim suscipit deleniti doloremque.
+                </p>
               </HorizontalCard>
             ))
           }

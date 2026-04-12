@@ -32,24 +32,26 @@ export default function Navbar({
             "lg:flex-row lg:items-end lg:justify-between lg:h-32",
             className   
           )}>
-
-          <div className={cn(
-            "flex items-center lg:items-end",
-            "w-fit h-fit py-2 lg:py-4 gap-2",
-          )}>
-            
-            <img src={ logo } alt="Student Union" className="relative lg:-bottom-3 w-14 lg:w-22 scale-150" />
-            
-            <p className="flex flex-col justify-center items-center w-fit h-full text-2xl lg:text-4xl">
-
-              { heading }
+          
+          <Link href={ "/" }>
+            <div className={cn(
+              "flex items-center lg:items-end",
+              "w-fit h-fit py-2 lg:py-4 gap-2",
+            )}>
               
-              <span className="-mt-2 text-sm">
-                { subHeading }
-              </span>
-            
-            </p>
-          </div>
+              <img src={ logo } alt="Student Union" className="relative lg:-bottom-3 w-14 lg:w-22 scale-130" />
+              
+              <p className="flex flex-col justify-center items-center w-fit h-full text-2xl lg:text-4xl">
+
+                { heading }
+                
+                <span className="-mt-2 text-sm">
+                  { subHeading }
+                </span>
+              
+              </p>
+            </div>
+          </Link>
 
           <div className="grid grid-cols-4 w-full lg:w-4/12 h-fit py-2 lg:py-4 text-base lg:text-xl border-red-400">
           {

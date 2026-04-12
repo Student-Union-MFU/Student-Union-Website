@@ -6,10 +6,12 @@ interface BaseDataInterface {
     content: string,
     images: string[],
     dateTime: string
-    link: string
+    link: string,
 }
 
-interface UpcomingEventDataInterface extends BaseDataInterface {}
+interface UpcomingEventDataInterface extends BaseDataInterface {
+    location: string,
+}
 
 interface LostAndFoundDataInterface extends BaseDataInterface{
 
@@ -21,16 +23,16 @@ export const NavigationData:NavbarInterface = {
     logo: "/logo/logo_3.png",
     linkItems: [
         {
+            name: "Home",
+            href: "/",
+        },
+        {
             name: "Events",
             href: "/events",
         },
         {
             name: "Lost & Found",
             href: "/lost-and-found",
-        },
-        {
-            name: "Gallery",
-            href: "",
         },
         {
             name: "About",
@@ -41,33 +43,53 @@ export const NavigationData:NavbarInterface = {
 
 export const UpcomingEventsData:UpcomingEventDataInterface[]  = [
     {
-        title: "EventPlaceHolder",
+        title: "Student Night Market",
         content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
         images: [
-            "./app/mock/mockcar2.png",
+            "./app/mock/MockPoster.png",
         ],
-        dateTime: "4.3.2026",
+        dateTime: "4 Jun 2026",
+        location: "M-Square Rooftop (L Park)",
         link: "#"
     },
     {
-        title: "EventPlaceHolder",
+        title: "Student Night Market",
         content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
-        images: [],
-        dateTime: "4.3.2026",
+        images: [
+            "./app/mock/MockPoster.png",
+        ],
+        dateTime: "4 Jun 2026",
+        location: "M-Square Rooftop (L Park)",
         link: "#"
     },
     {
-        title: "EventPlaceHolder",
+        title: "Student Night Market",
         content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
-        images: [],
-        dateTime: "4.3.2026",
+        images: [
+            "./app/mock/MockPoster.png",
+        ],
+        dateTime: "4 Jun 2026",
+        location: "M-Square Rooftop (L Park)",
         link: "#"
     },
     {
-        title: "EventPlaceHolder",
+        title: "Student Night Market",
         content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
-        images: [],
-        dateTime: "4.3.2026",
+        images: [
+            "./app/mock/MockPoster.png",
+        ],
+        dateTime: "4 Jun 2026",
+        location: "M-Square Rooftop (L Park)",
+        link: "#"
+    },
+    {
+        title: "Student Night Market",
+        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
+        images: [
+            "./app/mock/MockPoster.png",
+        ],
+        dateTime: "4 Jun 2026",
+        location: "M-Square Rooftop (L Park)",
         link: "#"
     },
 ]
@@ -78,7 +100,7 @@ export const LostAndFoundData:LostAndFoundDataInterface[] = [
         content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
         images: [],
         dateTime: "4.3.2026",
-        link: "#"
+        link: "#",
     },
 ]   
 
