@@ -1,7 +1,12 @@
+"use client";
+
 import { cn } from "@/lib/utils"
-import { Clock, MapPin } from "lucide-react"
+import { ArrowUpRight, Clock, MapPin } from "lucide-react"
 import Link from "next/link"
 import { Separator } from "./ui/separator"
+import { useContrastText } from "@/hooks/use-contrast"
+import { useEffect, useState } from "react"
+import { Skeleton } from "./ui/skeleton"
 
 export interface CardInterface {
     image?: string,
@@ -23,21 +28,67 @@ export function VerticalCard({
     return (
         <Link href={ link } onClick={ onClick }>
             <div className={cn(
-                    "w-full h-full min-h-50 max-h-84 flex flex-col justify-end",
+                    "flex flex-col justify-end",
+                    "w-full max-w-74 h-134 max-h-134",
                     "cursor-pointer",
                     "hover:scale-101 active:scale-100 transition-all",
-                    "lg:h-full lg:w-full lg:max-h-full overflow-hidden p-2",
+                    "overflow-hidden p-2 gap-6",
                     className
                 )} >
                 
-                <div className="z-20 absolute lg:relative bottom-0 left-0 block h-full lg:h-9/12 w-full overflow-hidden">
-                    <img src={ image } alt=":3" className="w-full h-full box-border object-cover mx-auto rounded-xl" />
+                <div className="z-20 absolute lg:relative bottom-0 left-0 block h-10/12 w-full overflow-hidden">
+                    <img src={ image } alt=":3" className="w-full h-full mx-auto box-border rounded-md" />
                 </div>
                 
-                <div className="z-30 w-full h-full lg:h-3/12">
+                <div className="z-30 w-full h-2/12 px-1">
+                    
                     { children }
+
                 </div>
             
+            </div>
+        </Link>
+    )
+}
+
+export function VerticalCardMobile({
+    image = "/img/MockPoster.png",
+    className,
+    children,
+    link = "#",
+    onClick
+}:VerticalCardInterface) {
+
+    return (
+
+        <Link href={link} onClick={onClick}>
+            <div className={cn(
+                "relative",
+                "flex flex-col justify-end",
+                "w-full max-w-md h-160",
+                "overflow-hidden rounded-sm",
+                className
+            )} >
+                <div className="w-full overflow-hidden shadow-2xl">
+
+                    <div className="relative h-auto">
+
+                        <div className="w-full h-8/12"> 
+                            <img
+                                src={ image }
+                                alt="The Hill Guest House"
+                                className="w-full h-full object-cover rounded-lg" />
+
+                        </div>
+                        <div className="w-full h-4/12 py-4">
+                            { children }
+                        </div>
+                       
+
+                    </div>
+
+                </div>
+
             </div>
         </Link>
     )
@@ -99,7 +150,76 @@ export function HorizontalCard({
     
                 </div>
     
+
             </div>
         </Link>
     )
 }
+
+export default function PropertyCard() {
+  return (
+    <div className="flex lg:hidden items-start justify-center min-h-screen bg-gray-100 p-8">
+      {/* Card */}
+      <div className="w-72 rounded-2xl overflow-hidden shadow-2xl font-serif">
+
+        {/* Image + gradient overlay section */}
+        <div className="relative h-72">
+          <img
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80"
+            alt="The Hill Guest House"
+            className="w-full h-full object-cover"
+          />
+
+          {/* ① Gradient overlay — fades image into the panel below */}
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-green-950/50 to-green-950/95" />
+
+          {/* Text sitting on top of gradient */}
+          <div className="absolute bottom-0 left-0 right-0 px-5 pb-0 text-white">
+            <h2 className="text-xl font-bold tracking-tight">The Hill Guest House</h2>
+            <p className="text-xs opacity-80 mt-1 mb-3">📍 58 Hullbrook Road, Billesley</p>
+
+            <div className="flex gap-4 text-xs opacity-85 pb-3 border-b border-white/20">
+              <span>🛏 Bed: 2</span>
+              <span>🛁 Baths: 1</span>
+              <span>📐 1150 sqft</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ② Bottom bar — backdrop blur + semi-transparent bg */}
+        {/*    backdrop-blur-md = blur(12px), bg-green-950/90 = rgba dark green at 90% opacity */}
+        <div className="backdrop-blur-md bg-green-950/90 px-5 py-4 flex gap-3 items-center">
+          {/* Price pill */}
+          <div className="bg-white/15 rounded-full px-4 py-2 text-white font-bold text-base whitespace-nowrap">
+            $620
+          </div>
+
+          {/* CTA button */}
+          <button className="flex-1 bg-white text-green-950 font-semibold rounded-full py-2 text-sm hover:bg-green-50 transition-colors cursor-pointer">
+            Reserve Now
+          </button>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+/*
+  KEY TAILWIND CLASSES EXPLAINED:
+  ─────────────────────────────────────────────────
+  overflow-hidden        → clips blur/gradient to card's rounded corners
+  rounded-2xl            → 16px border radius on the card
+
+  bg-gradient-to-b       → gradient direction: top → bottom
+  from-transparent       → starts fully transparent (shows image)
+  via-green-950/50       → midpoint: dark green at 50% opacity
+  to-green-950/95        → end: dark green at 95% opacity (matches bar)
+
+  backdrop-blur-md       → blur(12px) on whatever is behind this element
+  bg-green-950/90        → same dark green at 90% opacity (the glass pane)
+  bg-white/15            → white at 15% opacity for the price pill
+
+  The secret: gradient color (green-950) == bar color (green-950)
+  This makes them look like one continuous surface.
+*/

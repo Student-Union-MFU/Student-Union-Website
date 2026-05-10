@@ -1,15 +1,20 @@
 import { NavbarInterface } from "./components/navbar";
 import car from "./app/mock/mockcar.png"
 
-interface BaseDataInterface {
+interface dateTimeInterface {
+    date: String,
+    time: String
+}
+
+export interface BaseDataInterface {
     title: string,
     content: string,
     images: string[],
-    dateTime: string
+    dateTime: dateTimeInterface,
     link: string,
 }
 
-interface UpcomingEventDataInterface extends BaseDataInterface {
+export interface UpcomingEventDataInterface extends BaseDataInterface {
     location: string,
 }
 
@@ -25,18 +30,22 @@ export const NavigationData:NavbarInterface = {
         {
             name: "Home",
             href: "/",
+            target: undefined
         },
         {
             name: "Events",
             href: "/events",
+            target: undefined
         },
         {
             name: "Lost & Found",
             href: "/lost-and-found",
+            target: '_blank'
         },
         {
             name: "About",
             href: "",
+            target: undefined
         },
     ],
 }
@@ -44,51 +53,43 @@ export const NavigationData:NavbarInterface = {
 export const UpcomingEventsData:UpcomingEventDataInterface[]  = [
     {
         title: "Student Night Market",
-        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
+        content: "Student Night Market: A gathering place for food, drinks, clothes, accessories, and many other items. ",
         images: [
-            "./app/mock/MockPoster.png",
+            "/img/events/1.png",
+            "/img/events/1.1.JPG",
         ],
-        dateTime: "4 Jun 2026",
+        dateTime: {
+            date: "27 March 2026",
+            time: "4:00 PM - 9:00 PM",
+        },
         location: "M-Square Rooftop (L Park)",
         link: "#"
     },
     {
-        title: "Student Night Market",
-        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
+        title: "Graduation Ceremony",
+        content: "Student Night Market: A gathering place for food, drinks, clothes, accessories, and many other items. ",
         images: [
-            "./app/mock/MockPoster.png",
+            "/img/events/2.png",
+            "/img/events/2.1.png",
         ],
-        dateTime: "4 Jun 2026",
+        dateTime: {
+            date: "27 March 2026",
+            time: "4:00 PM - 9:00 PM",
+        },
         location: "M-Square Rooftop (L Park)",
         link: "#"
     },
     {
-        title: "Student Night Market",
-        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
+        title: "Fight for Flag",
+        content: "Student Night Market: A gathering place for food, drinks, clothes, accessories, and many other items. ",
         images: [
-            "./app/mock/MockPoster.png",
+            "/img/events/3.png",
+            "/img/events/3.1.png",
         ],
-        dateTime: "4 Jun 2026",
-        location: "M-Square Rooftop (L Park)",
-        link: "#"
-    },
-    {
-        title: "Student Night Market",
-        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
-        images: [
-            "./app/mock/MockPoster.png",
-        ],
-        dateTime: "4 Jun 2026",
-        location: "M-Square Rooftop (L Park)",
-        link: "#"
-    },
-    {
-        title: "Student Night Market",
-        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
-        images: [
-            "./app/mock/MockPoster.png",
-        ],
-        dateTime: "4 Jun 2026",
+        dateTime: {
+            date: "27 March 2026",
+            time: "4:00 PM - 9:00 PM",
+        },
         location: "M-Square Rooftop (L Park)",
         link: "#"
     },
@@ -99,7 +100,10 @@ export const LostAndFoundData:LostAndFoundDataInterface[] = [
         title: "LostItemPlaceHolder",
         content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti beatae ipsa voluptas, sint odio architecto, optio est magnam minima, necessitatibus quidem error. Excepturi asperiores eos minima repellat non animi? Illum?",
         images: [],
-        dateTime: "4.3.2026",
+        dateTime: {
+            date: "27 March 2026",
+            time: "4:00 PM - 9:00 PM",
+        },
         link: "#",
     },
 ]   
@@ -113,3 +117,10 @@ export const ScrollIndicatorData = [
     { label: "Lost and Found", start: 0.80, end: 0.96 },
     { label: "Footer", start: 0.96, end: 1 },
 ];
+
+export const picturesData = [
+    "/img/events/1.1.JPG",
+    "/img/events/2.1.png",
+    "/img/events/3.1.png",
+    "/img/events/4.1.png",
+]

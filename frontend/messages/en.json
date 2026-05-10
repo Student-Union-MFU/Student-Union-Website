@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "events": "Events",
+    "lostFound": "Lost & Found",
+    "about": "About"
+  },
+  "events": {
+    "upcoming": "Upcoming Events",
+    "past": "Past Events",
+    "readMore": "Read More"
+  },
+  "su_store": {
+    "check": "Check Out"
+  }
+}

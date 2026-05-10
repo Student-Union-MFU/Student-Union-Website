@@ -4,16 +4,17 @@ import { useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Divider from "../divider";
+import { Separator } from "./separator";
+import { CalendarCheck2, Clock, MapPin } from "lucide-react";
+import { BaseDataInterface, UpcomingEventDataInterface } from "@/mockdata";
+import { Button } from "./button";
 
 export const StickyScroll = ({
   content,
   contentClassName,
 }: {
-  content: {
-    title: string;
-    description: string;
-    content?: React.ReactNode | any;
-  }[];
+
+  content: UpcomingEventDataInterface[];
   contentClassName?: string;
 }) => {
   const [activeCard, setActiveCard] = React.useState(0);
@@ -43,23 +44,7 @@ export const StickyScroll = ({
 
   const backgroundColors = [
     "#ffffff"
-    // "#0f172a", // slate-900
-    // "#000000", // black
-    // "#171717", // neutral-900
   ];
-  const linearGradients = [
-    "linear-gradient(to bottom right, #06b6d4, #10b981)", // cyan-500 to emerald-500
-    "linear-gradient(to bottom right, #ec4899, #6366f1)", // pink-500 to indigo-500
-    "linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
-  ];
-
-  const [backgroundGradient, setBackgroundGradient] = useState(
-    linearGradients[0],
-  );
-
-  useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
 
   return (
     <motion.div
@@ -70,45 +55,85 @@ export const StickyScroll = ({
       className="relative flex justify-start space-x-10"
       ref={ref}
     >
-      <div className="div relative flex items-start px-4 w-1/2 ">
+      <div className="div relative flex items-start px-4 w-1/2 h-full">
         <div className="max-w-full">
           {content.map((item, index) => (
-            <div key={item.title + index} className="h-80 my-20">
-              <motion.h2
+            <div key={item.title + index} className="h-100 my-20">
+              <motion.div
                 initial={{
                   opacity: 0,
                 }}
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-4xl text-zinc-900"
+                className="text-xl max-w-full text-zinc-900"
               >
-                {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-xl mt-10 max-w-full text-zinc-900"
-              >
-                {item.description}
-              </motion.p>
+                {/* {item.description} */}
+                <div className="flex flex-col w-full h-full">
+                  <div className="overflow-hidden">
+
+                    {/* Header band */}
+                    <div className="flex items-center justify-between px-6 py-3 " >
+                      <span className="text-2xl font-medium uppercase tracking-widest">
+                        { item.title }
+                      </span>
+                      <span className="text-xs font-medium px-3 py-0.5 rounded-full bg-green-100 text-green-700">
+                        Upcoming
+                      </span>
+                    </div>
+
+                    {/* Body */}
+                    <div className="p-6 flex flex-col gap-5">
+                      <p className="text-base leading-relaxed line-clamp-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore delectus nesciunt ut atque totam, deleniti reprehenderit repellendus incidunt sapiente numquam rem optio nobis, iusto repudiandae quibusdam esse aliquam doloremque non?
+                      </p>
+
+                      <Button variant="link" className=" self-end w-fit p-0 h-auto text-sm">
+                        Read more
+                      </Button>
+
+                      <Separator />
+
+                      <div className="flex flex-col gap-2.5 text-base">
+                        <p className="flex items-center gap-2.5 ">
+                          <MapPin className="size-4 shrink-0 text-muted-foreground" />
+                          {item.location}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <p className="flex items-center gap-2.5">
+                            <CalendarCheck2 className="size-4 shrink-0 text-muted-foreground" />
+                            {item.dateTime.date}
+                          </p>
+                          <p className="flex items-center gap-2 ">
+                            <Clock className="size-4 shrink-0" />
+                            {item.dateTime.time}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </motion.div>
             </div>
           ))}
           <div className="h-40" />
         </div>
       </div>
       <div
-        style={{ background: backgroundGradient }}
         className={cn(
           "sticky top-1/3 hidden h-60 w-80 lg:h-120 lg:w-1/2 overflow-hidden rounded-md bg-white lg:block",
           contentClassName,
         )}
       >
-        {content[activeCard].content ?? null}
+        {content[activeCard].images[1] ?
+          <div className="flex flex-col h-full w-full items-center justify-center">
+            <img src={content[activeCard].images[1]} alt="img" className="w-full h-full object-cover" />
+          </div>
+          :
+          null
+        }
+        
       </div>
     </motion.div>
   );

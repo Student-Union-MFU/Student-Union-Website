@@ -97,11 +97,6 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  --font-Butler: var(--font-butler);
-  --font-Louis: var(--font-louis);
-  --font-Heavitas: var(--font-heavitas);
-  --font-TSBlock: var(--font-tsblock);
-
   --background-image-union-gradient: radial-gradient(
     circle, 
     #002884 0%, 
@@ -153,27 +148,41 @@
   body {
     @apply bg-background text-foreground;
   }
-  html {
-    @apply font-Louis;
-  }
 }
 
-@font-face {
-  font-family: "Butler";
-  src: url("/fonts/Butler.otf");
-}
 
 @font-face {
   font-family: "Louis";
-  src: url("/fonts/Louis.ttf");
+  src: url("/fonts/Louis.ttf") format("woff2");
 }
 
 @font-face {
-  font-family: "Heavitas";
-  src: url("/fonts/Heavitas.ttf");
+  font-family: 'Comfortaa-Regular';
+  src: url('/fonts/Comfortaa-Regular.ttf') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;        /* ← shows fallback instantly, swaps when ready */
 }
 
 @font-face {
-  font-family: "TSBlock";
-  src: url("/fonts/TS Block Bold.ttf");
+  font-family: "Dream-Orphans-Bd";
+  src: url("/fonts/Dream Orphans Bd.otf") format("woff2");
+}
+
+@font-face {
+  font-family: "Relicta-Light";
+  src: url("/fonts/Relicta-Light.otf") format("woff2");
+}
+
+@theme {
+  --font-heading: 'Relicta-Light', sans-serif; ;
+  --font-body: 'Louis', sans-serif; ;
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-body), sans-serif;
 }
