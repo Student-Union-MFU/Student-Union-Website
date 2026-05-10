@@ -3,6 +3,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import SmoothScrollProvider from "@/components/scrollsmoother";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +28,11 @@ export default function RootLayout({
       <body className="min-h-full w-full flex flex-col font-Louis">
         <SmoothScrollProvider>
           <TooltipProvider>
+ 
             {children}
+
+            <Footer />
+ 
           </TooltipProvider>
         </SmoothScrollProvider>
       </body>
