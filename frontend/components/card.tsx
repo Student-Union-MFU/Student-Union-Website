@@ -65,7 +65,7 @@ export function VerticalCardMobile({
             <div className={cn(
                 "relative",
                 "flex flex-col justify-end",
-                "w-full max-w-md h-160",
+                "w-full max-w-md h-170",
                 "overflow-hidden rounded-sm",
                 className
             )} >
@@ -115,15 +115,15 @@ export function HorizontalCard({
             <div className={cn(
                 "w-full h-full flex flex-col lg:flex-row rounded-xl overflow-hidden cursor-pointer",
                 "hover:border-zinc-400 hover:scale-101 transition-all",
-                "lg:max-h-60",
+                "lg:max-h-60 lg:gap-4",
                 className
             )}>
     
                 <div className="
                     flex items-center justify-center
-                    w-full lg:w-4/12 max-w-150 h-7/12 lg:h-full max-h-70 lg:max-h-87 lg:max-w-100
+                    w-full lg:w-4/12 max-w-150 h-7/12 lg:h-full max-h-50 lg:max-h-87 lg:max-w-100
                 ">
-                    <img src={ image } alt={ title } className="w-11/12 h-11/12 border border-zinc-400 rounded-2xl box-border object-cover"/>
+                    <img src={ image } alt={ title } className="w-full h-full border border-zinc-400 rounded-2xl box-border object-cover"/>
                 </div>
 
                 <div className="relative w-full lg:w-8/12 h-5/12 lg:h-full flex flex-col justify-start p-4 gap-0 bg-background">
@@ -134,12 +134,12 @@ export function HorizontalCard({
 
                     <Separator className={"my-2"} />
 
-                    <h2 className="flex items-center gap-2 text-sm lg:text-lg">
+                    <h2 className="flex items-center py-1 gap-2 text-sm lg:text-lg">
                         <MapPin className="size-5" />
                         { subTitle }
                     </h2>
 
-                    <h2 className="flex items-center gap-2 text-sm lg:text-lg">
+                    <h2 className="flex items-center py-1 gap-2 text-sm lg:text-lg">
                         <Clock className="size-5" />
                         { timestamp }
                     </h2>
