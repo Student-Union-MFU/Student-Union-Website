@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "home": "Home",
+    "events": "Events",
+    "lostFound": "Lost & Found",
+    "about": "About"
+  },
+  "hero": {
+    "text": "The MFU Student Union is the heart of student life, dedicated to representing student voices and fostering a vibrant, inclusive campus community through diverse events and support services."
+  },
+  "extra": {
+    "spotlight": "Founded alongside the university in 1998, the MFU Student Union has evolved from a small group of pioneers into a dynamic representative body, dedicated to upholding the legacy of the Princess Mother while driving innovation and inclusivity for our global student community.",
+    "text1": "SU leaders often sit in on university committees. This relationship ensures that as MFU moves toward its goal of becoming a 'Leading University in ASEAN,' the students are leading that change, not just following it.",
+    "text2": "Acting as the primary advocate for the student body, the Student Union transforms individual concerns into collective action, bridging the gap between student aspirations and university policy to create a campus that truly belongs to everyone.."
+  },
+  "events": {
+    "upcoming": "Upcoming Events",
+    "past": "Past Events",
+    "readMore": "Read More"
+  },
+  "su_store": {
+    "su": "Student Union Store",
+    "check": "Check Out",
+    "text": "From exclusive MFU apparel to your daily academic essentials, the SU Store provides high-quality products tailored for the modern student. Shop our latest collection and carry the spirit of the Student Union wherever you go."
+  },
+  "footer": {
+    "getInTouch": "Get in Touch",
+    "explore": "Explore",
+    "findUs": "Find us",
+    "address": "Student Union Room - D1, Mae Fah Luang University. Nang Lae, Mueang Chiang Rai District, Chiang Rai 57100",
+    "rights": "All rights reserved."
+  }
+}

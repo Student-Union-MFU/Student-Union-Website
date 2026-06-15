@@ -1,73 +1,26 @@
 services:
   frontend:
-    build: ./frontend
+    build: .
     container_name: nextjs-frontend
     ports:
-      - "3001:3000" # Access at http://localhost:3001
-    # volumes:
-    #   - ./frontend:/app
-    #   - /app/node_modules
+      - "3001:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:3000
-
     develop:
       watch:
-        - path: ./frontend/package.json
-          action: rebuild # Rebuild if you add new npm packages
-        - path: ./frontend/next.config.js
+        - path: ./package.json
           action: rebuild
-        - path: ./frontend
+        - path: ./next.config.ts
+          action: rebuild
+        - path: .
           target: /app
-          action: sync # Instantly sync code changes (Hot Reload)
+          action: sync
           ignore:
             - node_modules/
 
-  backend:
-      build: ./backend
-      container_name: nestjs-backend
-      ports:
-        - "3000:3000" # Access at http://localhost:3000
-      environment:
-        # We use the exact name of the database service below as the host!
-        - DB_HOST=database 
-        - DB_PORT=5432 
-        - DB_USER=admin
-        - DB_PASS=yion
-        - DB_NAME=sudb
-      depends_on:
-        # This tells Docker to start the database BEFORE starting the backend
-        - database 
-      develop:
-        watch:
-          - path: ./backend/package.json
-            action: rebuild
-          - path: ./backend
-            target: /app
-            action: sync
-            ignore:
-              - node_modules/
-              - dist/
-  
-  # --- The Database Service ---
-  database:
-    image: postgres:15-alpine # A lightweight version of PostgreSQL
-    container_name: postgres-db
-    restart: always # Automatically restart if it crashes
-    environment:
-      # These must match what your backend expects
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=yion
-      - POSTGRES_DB=sudb
-    ports:
-      - "5432:5432" # Allows you to connect a database viewer tool from your laptop
-    volumes:
-      # Maps the data inside the container to the named volume below
-      - pgdata:/var/lib/postgresql/data
-
 networks:
   default:
-    name: fullstack-network
-
-# --- Define the persistent volume ---
-volumes:
-  pgdata:
+    name: student-union-network
